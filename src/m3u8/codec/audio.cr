@@ -6,7 +6,7 @@ module M3U8
       HE_AAC = "he-aac"
       MP3    = "mp3"
 
-      # HLS referecne
+      # HLS reference
       AAC_LC_HLS = "mp4a.40.2"
       HE_AAC_HLS = "mp4a.40.5"
       MP3_HLS    = "mp4a.40.34"
@@ -21,7 +21,7 @@ module M3U8
 
       def to_hls
         LIST.each do |item|
-          return item[:hls] if @name == item[:name]
+          return item[:hls] if @name.downcase == item[:name]
         end
       end
     end
