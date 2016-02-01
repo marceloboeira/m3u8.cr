@@ -5,6 +5,11 @@ module M3U8
       @builder += header
     end
 
+    def add_segment(uri : String, duration : Float64)
+      @builder += "#EXTINF:#{duration},\n" \
+                  "#{uri}\n"
+    end
+
     def to_s
       @builder
     end
