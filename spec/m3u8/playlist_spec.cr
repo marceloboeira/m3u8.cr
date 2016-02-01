@@ -16,7 +16,7 @@ describe M3U8::Playlist do
       playlist.add_segment("S01E01-1080-0001.ts", 9.003)
 
       output = "#EXTINF:9.003,\n" \
-        "S01E01-1080-0001.ts\n"
+               "S01E01-1080-0001.ts\n"
 
       expect(playlist.to_s).to match(/#{output}/)
     end
