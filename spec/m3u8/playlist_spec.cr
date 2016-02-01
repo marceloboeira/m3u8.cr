@@ -8,6 +8,10 @@ describe M3U8::Playlist do
       expect(playlist.to_s).to match(/#EXTM3U\n/)
     end
 
+    it "inserts an empty line between the header and rest" do
+      expect(playlist.to_s.lines[1]).to eq("\n")
+    end
+
     it "accepts new segments" do
       playlist.add_segment("S01E01-1080-0001.ts", 9.003)
 
