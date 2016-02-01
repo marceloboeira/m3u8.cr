@@ -15,7 +15,8 @@ module M3U8
     end
 
     private def header
-      "#EXTM3U\n"
+      "#EXTM3U\n" \
+      "\n"
     end
   end
 end
