@@ -11,6 +11,22 @@ dependencies:
     github: marceloboeira/m3u8
 ```
 
+## Usage
+
+Small example:
+
+```crystal
+require "m3u8"
+
+playlist = M3U8::Playlist.new
+
+playlist.add_segment("low-001.ts", 3.054)
+playlist.add_segment("low-002.ts", 3.054)
+playlist.add_segment("low-003.ts", 3.054)
+
+puts playlist.to_s
+```
+
 ## Contributing
 
 Want to contribute? check [this](CONTRIBUTE.md) first.
