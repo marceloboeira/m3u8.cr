@@ -31,6 +31,16 @@ playlist.add_segment("low-003.ts", 3.054)
 puts playlist.to_s
 ```
 
+## M3U8 in other languages
+
+- [Ruby](https://github.com/zencoder/m3uzi)
+- [Python](https://github.com/globocom/m3u8)
+- [Go](https://github.com/grafov/m3u8)
+- [Javascript](https://github.com/tedconf/node-m3u8)
+- [Objective C](https://github.com/Jeanvf/M3U8Paser)
+- [Java](http://sourceforge.net/projects/m3u8parser)
+- [Erlang](https://github.com/karlll/erlm3u8)
+
 ## Contributing
 
 Want to contribute? check [this](CONTRIBUTE.md) first.
