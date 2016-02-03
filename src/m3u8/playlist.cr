@@ -15,7 +15,11 @@ module M3U8
     # the duration of the Media Segment in seconds.
     # - title: an optional human-readable informative title of the Media Segment.
     def add_segment(uri : String, duration : Float64)
-      @builder += "#EXTINF:#{duration},\n" \
+      add_segment(uri, duration, "")
+    end
+
+    def add_segment(uri : String, duration : Float64, title : String)
+      @builder += "#EXTINF:#{duration},#{title}\n" \
                   "#{uri}\n"
     end
 
