@@ -1,6 +1,10 @@
 # m3u8 [![Build Status](https://travis-ci.org/marceloboeira/m3u8.cr.svg?branch=master)](https://travis-ci.org/marceloboeira/m3u8.cr)
 > Generate and parse m3u8 playlists for HTTP Live Streaming with Crystal
 
+## Status
+
+The project is currently on a very early stage of **development**, take a look at the [M3U8.md](M3U8.md) file in order to check the progress.
+
 ## Installation
 
 Add this to your application's `shard.yml`:
