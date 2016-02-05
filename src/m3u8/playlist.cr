@@ -1,8 +1,10 @@
 module M3U8
   class Playlist
-    def initialize(@target_duration : Int32)
+    def initialize(duration : Int32)
       @builder = ""
       @builder += header
+      @builder += target_duration(duration)
+      @builder += "\n"
     end
 
     # EXTINF
@@ -33,9 +35,7 @@ module M3U8
     # The EXTM3U tag indicates that the file is an Extended M3U Playlist file.
     # It MUST be the first line of every Media Playlist and every Master Playlist
     private def header
-      "#EXTM3U\n" \
-      "#{target_duration}" \
-      "\n"
+      "#EXTM3U\n"
     end
 
     # EXT-X-TARGETDURATION
@@ -49,8 +49,8 @@ module M3U8
     # Its format is: EXT-X-TARGETDURATION:<s>
     # - s is a decimal-integer indicating the target duration in seconds.
     # The EXT-X-TARGETDURATION tag is REQUIRED.
-    private def target_duration
-      "#EXT-X-TARGETDURATION:#{@target_duration}\n"
+    private def target_duration(duration : Int32)
+      "#EXT-X-TARGETDURATION:#{duration}\n"
     end
   end
 end
