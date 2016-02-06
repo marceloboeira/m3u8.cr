@@ -9,12 +9,16 @@ describe M3U8::Playlist do
       expect(playlist.to_s).to match(/#EXTM3U\n/)
     end
 
+    it "inserts the version tag" do
+      expect(playlist.to_s).to match(/#EXT-X-VERSION:3\n/)
+    end
+
     it "inserts the target-duration tag" do
       expect(playlist.to_s).to match(/#EXT-X-TARGETDURATION:3\n/)
     end
 
     it "inserts an empty line between the header and rest" do
-      expect(playlist.to_s.lines[2]).to eq("\n")
+      expect(playlist.to_s.lines[3]).to eq("\n")
     end
 
     context "when adding new segments" do
