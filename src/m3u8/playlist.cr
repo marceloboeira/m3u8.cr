@@ -17,13 +17,8 @@ module M3U8
     # - duration: a decimal-floating-point or decimal-integer number that specifies
     # the duration of the Media Segment in seconds.
     # - title: an optional human-readable informative title of the Media Segment.
-    def add_segment(uri : String, duration : Float64)
-      add_segment(uri, duration, "")
-    end
-
-    def add_segment(uri : String, duration : Float64, title : String)
-      @builder += "#EXTINF:#{duration},#{title}\n" \
-                  "#{uri}\n"
+    def add_segment(segment : M3U8::Playlist::Segment)
+      @builder += segment.to_s
     end
 
     def to_s
