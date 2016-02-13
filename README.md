@@ -12,7 +12,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   m3u8:
-    github: marceloboeira/m3u8
+    github: marceloboeira/m3u8.cr
 ```
 
 ## Usage
