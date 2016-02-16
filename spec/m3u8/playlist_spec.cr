@@ -22,11 +22,22 @@ describe M3U8::Playlist do
     end
 
     context "when adding new segments" do
-      it "accepts a segment" do
+      it "accepts a single segment" do
         segment = M3U8::Playlist::Segment.new("S01E01-1080-0001.ts", 9.003)
         playlist.add_segment(segment)
 
         expect(playlist.to_s).to match(/#{segment.to_s}/)
+      end
+
+      it "accepts multiple segments" do
+        segments = [ M3U8::Playlist::Segment.new("S01E01-1080-0001.ts", 9.003),
+                     M3U8::Playlist::Segment.new("S01E01-1080-0002.ts", 9.003) ]
+
+        playlist.add_segment(segments[0])
+        playlist.add_segment(segments[1])
+
+        expect(playlist.to_s).to match(/#{segments[0].to_s}/)
+        expect(playlist.to_s).to match(/#{segments[1].to_s}/)
       end
     end
   end
