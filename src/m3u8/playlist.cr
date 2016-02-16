@@ -1,13 +1,10 @@
 module M3U8
   class Playlist
     @duration : Int32
+    @segments : Array(M3U8::Playlist::Segment)
 
     def initialize(@duration)
-      @builder = ""
-      @builder += header
-      @builder += version
-      @builder += target_duration
-      @builder += "\n"
+      @segments = [] of M3U8::Playlist::Segment
     end
 
     # EXTINF
@@ -20,11 +17,27 @@ module M3U8
     # the duration of the Media Segment in seconds.
     # - title: an optional human-readable informative title of the Media Segment.
     def add_segment(segment : M3U8::Playlist::Segment)
-      @builder += segment.to_s
+      @segments << segment
     end
 
     def to_s
-      @builder
+      builder = ""
+      builder += header
+      builder += version
+      builder += target_duration
+      builder += "\n"
+      builder += segments
+
+      builder
+    end
+
+    private def segments
+      buffer = ""
+      @segments.each do |segment|
+        buffer += segment.to_s
+      end
+
+      buffer
     end
 
     # EXTM3U
