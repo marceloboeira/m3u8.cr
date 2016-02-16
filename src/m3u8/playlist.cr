@@ -1,10 +1,12 @@
 module M3U8
   class Playlist
-    def initialize(duration : Int32)
+    @duration : Int32
+
+    def initialize(@duration)
       @builder = ""
       @builder += header
       @builder += version
-      @builder += target_duration(duration)
+      @builder += target_duration
       @builder += "\n"
     end
 
@@ -61,8 +63,8 @@ module M3U8
     # Its format is: EXT-X-TARGETDURATION:<s>
     # - s is a decimal-integer indicating the target duration in seconds.
     # The EXT-X-TARGETDURATION tag is REQUIRED.
-    private def target_duration(duration : Int32)
-      "#EXT-X-TARGETDURATION:#{duration}\n"
+    private def target_duration
+      "#EXT-X-TARGETDURATION:#{@duration}\n"
     end
   end
 end
