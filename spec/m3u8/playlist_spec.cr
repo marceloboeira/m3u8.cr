@@ -1,7 +1,7 @@
 require "./../spec_helper"
 
 describe M3U8::Playlist do
-  context "when creating a playlist" do
+  context "when rendering a playlist" do
     let(target_duration) { 3 }
     let(playlist) { M3U8::Playlist.new(target_duration) }
 
