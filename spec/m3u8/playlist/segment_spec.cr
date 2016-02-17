@@ -1,21 +1,23 @@
 require "./../../spec_helper"
 
 describe M3U8::Playlist::Segment do
-  it "accepts with url and duration" do
-    segment = M3U8::Playlist::Segment.new("S01E01-1080-0001.ts", 9.003)
+  context "when rendenring a segments" do
+    it "accepts with url and duration" do
+      segment = M3U8::Playlist::Segment.new("S01E01-1080-0001.ts", 9.003)
 
-    output = "#EXTINF:9.003,\n" \
-             "S01E01-1080-0001.ts\n"
+      output = "#EXTINF:9.003,\n" \
+        "S01E01-1080-0001.ts\n"
 
-    expect(segment.to_s).to match(/#{output}/)
-  end
+      expect(segment.to_s).to match(/#{output}/)
+    end
 
-  it "accepts optional title" do
-    segment = M3U8::Playlist::Segment.new("S01E02-1080-0002.ts", 9.009, "LOST - S01E02")
+    it "accepts optional title" do
+      segment = M3U8::Playlist::Segment.new("S01E02-1080-0002.ts", 9.009, "LOST - S01E02")
 
-    output = "#EXTINF:9.009,LOST - S01E02\n" \
-             "S01E02-1080-0002.ts\n"
+      output = "#EXTINF:9.009,LOST - S01E02\n" \
+        "S01E02-1080-0002.ts\n"
 
-    expect(segment.to_s).to match(/#{output}/)
+      expect(segment.to_s).to match(/#{output}/)
+    end
   end
 end
