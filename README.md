@@ -22,10 +22,10 @@ Small example:
 ```crystal
 require "m3u8"
 
-playlist = M3U8::Playlist.new(4)
+playlist = M3U8::MediaPlaylist.new(4)
 
-playlist.segments << M3U8::Playlist::Segment.new("low-001.ts", 3.054)
-playlist.segments << M3U8::Playlist::Segment.new("low-002.ts", 3.054)
+playlist.segments << M3U8::MediaPlaylist::Segment.new("low-001.ts", 3.054)
+playlist.segments << M3U8::MediaPlaylist::Segment.new("low-002.ts", 3.054)
 ...
 
 puts playlist.to_s
