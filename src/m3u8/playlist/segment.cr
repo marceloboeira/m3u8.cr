@@ -1,6 +1,7 @@
 module M3U8
   class Playlist
     class Segment
+      property uri, duration, title
 
       # EXTINF
       # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.2.1
