@@ -26,18 +26,12 @@ module M3U8
       builder += version
       builder += target_duration
       builder += "\n"
-      builder += segments
 
-      builder
-    end
-
-    private def segments
-      buffer = ""
       @segments.each do |segment|
-        buffer += segment.to_s
+        builder += segment.to_s
       end
 
-      buffer
+      builder
     end
 
     # EXTM3U
