@@ -1,24 +1,8 @@
 module M3U8
   class Playlist
-    @duration : Int32
-    @segments : Array(M3U8::Playlist::Segment)
+    property duration, segments
 
-    def initialize(@duration)
-      @segments = [] of M3U8::Playlist::Segment
-    end
-
-    # EXTINF
-    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.2.1
-    #
-    # The EXTINF tag specifies the duration of a Media Segment. It applies only to the
-    # next Media Segment. This tag is REQUIRED for each Media Segment.
-    # Its format is: EXTINF:<duration>,[<title>]
-    # - duration: a decimal-floating-point or decimal-integer number that specifies
-    # the duration of the Media Segment in seconds.
-    # - title: an optional human-readable informative title of the Media Segment.
-    def add_segment(segment : M3U8::Playlist::Segment)
-      @segments << segment
-    end
+    def initialize(@duration : Int32, @segments = [] of M3U8::Playlist::Segment); end
 
     def to_s
       builder = ""

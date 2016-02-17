@@ -29,9 +29,7 @@ describe M3U8::Playlist do
       }
 
       before do
-        segments.each do |segment|
-          playlist.add_segment(segment)
-        end
+        playlist.segments = segments
       end
 
       it "renders multiple segments" do
