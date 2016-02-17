@@ -43,4 +43,4 @@ puts playlist.to_s
 
 ## Contributing
 
-Want to contribute? check [this](CONTRIBUTE.md) first.
+Want to contribute? check [this](CONTRIBUTING.md) first.
