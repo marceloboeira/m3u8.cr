@@ -9,6 +9,7 @@ module M3U8
       builder += header
       builder += version
       builder += target_duration
+      builder += media_sequence
       builder += "\n"
 
       @segments.each do |segment|
@@ -56,6 +57,26 @@ module M3U8
     # The EXT-X-TARGETDURATION tag is REQUIRED.
     private def target_duration
       "#EXT-X-TARGETDURATION:#{@duration}\n"
+    end
+
+    # EXT-X-MEDIA-SEQUENCE
+    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.3.2
+    #
+    # The tag indicates the Media Sequence Number of the first Media Segment
+    # that appears in a Playlist file.
+    # Its format is: #EXT-X-MEDIA-SEQUENCE:<number>
+    # - number is a decimal-integer.
+    #
+    # If the Media Playlist file does not contain an EXT-X-MEDIA-SEQUENCE
+    # tag then the Media Sequence Number of the first Media Segment in the
+    # Media Playlist SHALL be considered to be 0.  A client MUST NOT assume
+    # that segments with the same Media Sequence Number in different Media
+    # Playlists contain matching content - see Section 6.3.2.
+    #
+    # The EXT-X-MEDIA-SEQUENCE tag MUST appear before the first Media
+    # Segment in the Playlist.
+    private def media_sequence
+      "#EXT-X-MEDIA-SEQUENCE:0\n"
     end
   end
 end
