@@ -1,5 +1,5 @@
 module M3U8
-  class MediaPlaylist
+  class MediaPlaylist < Playlist
     class Segment
       property uri, duration, title
 
