@@ -15,6 +15,10 @@ describe M3U8::MasterPlaylist do
       expect(playlist.to_s).to match(/#EXT-X-VERSION:3\n/)
     end
 
+    it "inserts an empty line between the header and rest" do
+      expect(playlist.to_s.lines[2]).to eq("\n")
+    end
+
     context "with streams" do
       it "renders multiple streams" do
         streams.each do |stream|
