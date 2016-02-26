@@ -1,7 +1,7 @@
 require "./../../spec_helper"
 
 describe M3U8::MediaPlaylist::Segment do
-  context "when rendenring a segments" do
+  context "when rendenring a segment" do
     it "accepts with url and duration" do
       segment = M3U8::MediaPlaylist::Segment.new("S01E01-1080-0001.ts", 9.003)
 
