@@ -1,12 +1,18 @@
 module M3U8
   class MasterPlaylist
-    def initialize; end
+    property streams
+
+    def initialize(@streams = [] of M3U8::MasterPlaylist::Stream); end
 
     def to_s
       builder = ""
       builder += header
       builder += version
       builder += "\n"
+
+      @streams.each do |stream|
+        builder += stream.to_s
+      end
 
       builder
     end
