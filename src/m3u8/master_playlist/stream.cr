@@ -110,10 +110,10 @@ module M3U8
       #    in the Master Playlist.  Having closed captions in one Variant
       #    Stream but not another can trigger playback inconsistencies.
       #    The CLOSED-CAPTIONS attribute is OPTIONAL.
-      def initialize(@uri : String); end
+      def initialize(@uri : String, @bandwidth : Int); end
 
       def to_s
-        "#EXT-X-STREAM-INF:\n" \
+        "#EXT-X-STREAM-INF:BANDWIDTH=#{@bandwidth}\n" \
         "#{@uri}\n"
       end
     end
