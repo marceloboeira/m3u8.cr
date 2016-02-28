@@ -2,7 +2,7 @@ module M3U8
   class MediaPlaylist
     property duration, segments
 
-    def initialize(@duration : Int32, @segments = [] of M3U8::Playlist::Segment); end
+    def initialize(@duration : Int32, @segments = [] of M3U8::MediaPlaylist::Segment); end
 
     def to_s
       builder = ""
