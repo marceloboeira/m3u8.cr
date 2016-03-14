@@ -12,7 +12,7 @@ module M3U8
       # - duration: a decimal-floating-point or decimal-integer number that specifies
       # the duration of the Media Segment in seconds.
       # - title: an optional human-readable informative title of the Media Segment.
-      def initialize(@uri : String, @duration : Float64, @title = "" : String); end
+      def initialize(@uri : String, @duration : Float64, @title : String = ""); end
 
       def to_s
         "#EXTINF:#{@duration},#{@title}\n" \
