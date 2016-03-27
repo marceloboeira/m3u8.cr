@@ -19,62 +19,18 @@ module M3U8
       builder
     end
 
-    # EXTM3U
-    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.1.1
-    #
-    # The EXTM3U tag indicates that the file is an Extended M3U Playlist file.
-    # It MUST be the first line of every Media Playlist and every Master Playlist
     private def header
       "#EXTM3U\n"
     end
 
-    # EXT-X-VERSION
-    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.1.2
-    #
-    # The EXT-X-VERSION tag indicates the compatibility version of the
-    # Playlist file, its associated media, and its server.
-    # Its format is: #EXT-X-VERSION:<n>
-    # - n is an integer indicating the protocol compatibility version
-    # number.
-    #
-    # It MUST appear in all Playlists containing tags or attributes that
-    # are not compatible with protocol version 1 to support
-    # interoperability with older clients.
     private def version
       "#EXT-X-VERSION:3\n"
     end
 
-    # EXT-X-TARGETDURATION
-    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.3.1
-    #
-    # The EXT-X-TARGETDURATION tag specifies the maximum Media Segment
-    # duration. The EXTINF duration of each Media Segment in the Playlist
-    # file, when rounded to the nearest integer, MUST be less than or equal
-    # to the target duration; longer segments can trigger playback stalls
-    # or other errors. It applies to the entire Playlist file.
-    # Its format is: EXT-X-TARGETDURATION:<s>
-    # - s is a decimal-integer indicating the target duration in seconds.
-    # The EXT-X-TARGETDURATION tag is REQUIRED.
     private def target_duration
       "#EXT-X-TARGETDURATION:#{@duration}\n"
     end
 
-    # EXT-X-MEDIA-SEQUENCE
-    # https://tools.ietf.org/html/draft-pantos-http-live-streaming-18#section-4.3.3.2
-    #
-    # The tag indicates the Media Sequence Number of the first Media Segment
-    # that appears in a Playlist file.
-    # Its format is: #EXT-X-MEDIA-SEQUENCE:<number>
-    # - number is a decimal-integer.
-    #
-    # If the Media Playlist file does not contain an EXT-X-MEDIA-SEQUENCE
-    # tag then the Media Sequence Number of the first Media Segment in the
-    # Media Playlist SHALL be considered to be 0.  A client MUST NOT assume
-    # that segments with the same Media Sequence Number in different Media
-    # Playlists contain matching content - see Section 6.3.2.
-    #
-    # The EXT-X-MEDIA-SEQUENCE tag MUST appear before the first Media
-    # Segment in the Playlist.
     private def media_sequence
       "#EXT-X-MEDIA-SEQUENCE:0\n"
     end
