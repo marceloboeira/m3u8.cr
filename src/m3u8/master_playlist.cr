@@ -1,8 +1,8 @@
 module M3U8
   class MasterPlaylist
-    property streams
+    property streams : Array(Stream)
 
-    def initialize(@streams = [] of M3U8::MasterPlaylist::Stream); end
+    def initialize(@streams); end
 
     def to_s
       builder = ""

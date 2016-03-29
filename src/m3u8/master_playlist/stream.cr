@@ -1,9 +1,9 @@
 module M3U8
   class MasterPlaylist
     class Stream
-      property uri
+      property uri : String, bandwidth : Int32
 
-      def initialize(@uri : String, @bandwidth : Int); end
+      def initialize(@uri, @bandwidth); end
 
       def to_s
         "#EXT-X-STREAM-INF:BANDWIDTH=#{@bandwidth}\n" \

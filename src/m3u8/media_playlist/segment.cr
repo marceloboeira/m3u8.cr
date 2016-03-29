@@ -1,9 +1,11 @@
 module M3U8
   class MediaPlaylist
     class Segment
-      property uri, duration, title
+      property uri : String,
+               duration : Float64,
+               title : String
 
-      def initialize(@uri : String, @duration : Float64, @title : String = ""); end
+      def initialize(@uri, @duration, @title = ""); end
 
       def to_s
         "#EXTINF:#{@duration},#{@title}\n" \
