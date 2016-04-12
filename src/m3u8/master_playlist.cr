@@ -4,16 +4,14 @@ module M3U8
 
     def initialize(@streams); end
 
-    def to_s(io : IO = MemoryIO.new)
+    def to_s(io)
       io << header
       io << version
       io << "\n"
 
       @streams.each do |stream|
-        io << stream.to_s
+        io << stream
       end
-
-      io.to_s
     end
 
     private def header

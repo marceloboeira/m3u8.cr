@@ -4,7 +4,7 @@ module M3U8
 
     def initialize(@duration, @segments); end
 
-    def to_s(io : IO = MemoryIO.new)
+    def to_s(io)
       io << header
       io << version
       io << target_duration
@@ -12,10 +12,8 @@ module M3U8
       io << "\n"
 
       @segments.each do |segment|
-        io << segment.to_s
+        io << segment
       end
-
-      io.to_s
     end
 
     private def header
