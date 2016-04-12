@@ -7,9 +7,14 @@ module M3U8
 
       def initialize(@uri, @duration, @title = ""); end
 
-      def to_s
-        "#EXTINF:#{@duration},#{@title}\n" \
-        "#{@uri}\n"
+      def to_s(io : IO = MemoryIO.new)
+        io << <<-STRING
+        #EXTINF:#{@duration},#{@title}
+        #{@uri}
+
+        STRING
+
+        io.to_s
       end
     end
   end

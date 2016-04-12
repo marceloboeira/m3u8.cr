@@ -4,19 +4,18 @@ module M3U8
 
     def initialize(@duration, @segments); end
 
-    def to_s
-      builder = ""
-      builder += header
-      builder += version
-      builder += target_duration
-      builder += media_sequence
-      builder += "\n"
+    def to_s(io : IO = MemoryIO.new)
+      io << header
+      io << version
+      io << target_duration
+      io << media_sequence
+      io << "\n"
 
       @segments.each do |segment|
-        builder += segment.to_s
+        io << segment.to_s
       end
 
-      builder
+      io.to_s
     end
 
     private def header

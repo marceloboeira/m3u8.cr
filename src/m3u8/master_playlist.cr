@@ -4,17 +4,16 @@ module M3U8
 
     def initialize(@streams); end
 
-    def to_s
-      builder = ""
-      builder += header
-      builder += version
-      builder += "\n"
+    def to_s(io : IO = MemoryIO.new)
+      io << header
+      io << version
+      io << "\n"
 
       @streams.each do |stream|
-        builder += stream.to_s
+        io << stream.to_s
       end
 
-      builder
+      io.to_s
     end
 
     private def header

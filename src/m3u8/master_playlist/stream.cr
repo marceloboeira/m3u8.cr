@@ -5,9 +5,14 @@ module M3U8
 
       def initialize(@uri, @bandwidth); end
 
-      def to_s
-        "#EXT-X-STREAM-INF:BANDWIDTH=#{@bandwidth}\n" \
-        "#{@uri}\n"
+      def to_s(io : IO = MemoryIO.new)
+        io << <<-STRING
+        #EXT-X-STREAM-INF:BANDWIDTH=#{@bandwidth}
+        #{@uri}
+
+        STRING
+
+        io.to_s
       end
     end
   end
